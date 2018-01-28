@@ -29,6 +29,9 @@ ModelImporter:
     100042: LegL2
     100044: LegR1
     100046: LegR2
+    100048: Bone_011
+    100050: Bone_012
+    100052: Bone_013
     400000: Armature
     400002: Bone
     400004: Bone_001
@@ -53,6 +56,9 @@ ModelImporter:
     400042: LegL2
     400044: LegR1
     400046: LegR2
+    400048: Bone_011
+    400050: Bone_012
+    400052: Bone_013
     4300000: Plane
     7400000: Default Take
     7400002: Idle
