@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class InitializeGame : MonoBehaviour {
 
     string[] headlines = new string[] { "1", "2", "3", "4", "5" };
-    string[] days = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+    string[] days = new string[] { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
     string[] desc = new string[] { "Sunny", "Partly Cloudy", "Cloudy", "Rainy"};
     bool setWrong = false;
     int choice = 0;
-    Sprite originalIcon;
-    string originalText;
+    internal Sprite originalIcon;
+    internal string originalText;
     int index;
 
     public Image[] icons = new Image[7];
@@ -22,24 +22,27 @@ public class InitializeGame : MonoBehaviour {
 
     public Text headline;
     public Sprite[] iconChoices = new Sprite[4];
+    public GameObject goal;
 
 	void Start () {
 
-        Initialize();
+        //Initialize();
 	}
 
     internal void Initialize()
     {
         setWrong = false;
+        originalIcon = null;
+        originalText = null;
         headline.text = headlines[Random.Range(0, headlines.Length - 1)];
 
-        DOW[0].text = "Sunday";
-        DOW[1].text = "Monday";
-        DOW[2].text = "Tuesday";
-        DOW[3].text = "Wednesday";
-        DOW[4].text = "Thursday";
-        DOW[5].text = "Friday";
-        DOW[6].text = "Saturday";
+        DOW[0].text = "SUN";
+        DOW[1].text = "MON";
+        DOW[2].text = "TUE";
+        DOW[3].text = "WED";
+        DOW[4].text = "THU";
+        DOW[5].text = "FRI";
+        DOW[6].text = "SAT";
 
         for (int i = 0; i < icons.Length; i++)
         {
@@ -91,6 +94,7 @@ public class InitializeGame : MonoBehaviour {
 
                     icons[index].sprite = iconChoices[newChoice];
                     this.index = newChoice;
+                    goal.transform.position = new Vector3(icons[index].gameObject.transform.position.x, icons[index].gameObject.transform.position.y, goal.transform.position.z);
 
                     break;
                 }
@@ -105,6 +109,8 @@ public class InitializeGame : MonoBehaviour {
 
                     description[index].text = desc[newChoice];
                     this.index = newChoice;
+                    goal.transform.position = new Vector3(description[index].gameObject.transform.position.x, 
+                        description[index].gameObject.transform.position.y, goal.transform.position.z);
 
                     break;
                 }
@@ -119,6 +125,7 @@ public class InitializeGame : MonoBehaviour {
 
                     DOW[index].text = days[newChoice];
                     this.index = newChoice;
+                    goal.transform.position = new Vector3(DOW[index].gameObject.transform.position.x, DOW[index].gameObject.transform.position.y, goal.transform.position.z);
 
                     break;
                 }
@@ -130,6 +137,7 @@ public class InitializeGame : MonoBehaviour {
 
                     high[index].text = newHigh.ToString();
                     this.index = newHigh;
+                    goal.transform.position = new Vector3(high[index].gameObject.transform.position.x, high[index].gameObject.transform.position.y, goal.transform.position.z);
 
                     break;
                 }
@@ -141,11 +149,23 @@ public class InitializeGame : MonoBehaviour {
 
                     high[index].text = newLow.ToString();
                     this.index = newLow;
+                    goal.transform.position = new Vector3(low[index].gameObject.transform.position.x, low[index].gameObject.transform.position.y, goal.transform.position.z);
 
                     break;
                 }
         }
 
         setWrong = true;
+        if (originalIcon != null)
+        {
+            Debug.Log(originalIcon.name);
+            GameObject.Find("HUD").GetComponent<GameManager>().SetSign(originalIcon);
+        }
+        else
+        {
+            Debug.Log(originalText);
+            GameObject.Find("HUD").GetComponent<GameManager>().SetSign(originalText);
+        }
+        
     }
 }

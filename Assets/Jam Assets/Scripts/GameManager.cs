@@ -28,8 +28,11 @@ public class GameManager : MonoBehaviour {
 	public string[] Insults;
 
 
-	public Text[] tempnumbers;
-	public Image[] weatherpictures;
+    public InitializeGame gameInitializer;
+    public Image image1;
+    public Image image2;
+    public Text text1;
+    public Text text2;
 
 	public GameObject firstGObutton;
 
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		timerinstance = StartCoroutine(TickTimer ());
 		pc.canControl = true;
+        gameInitializer.Initialize();
 		//yield return new WaitForSeconds (1f);
 	}
 
@@ -125,11 +129,30 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-	public void SetSign(){
-		
+	public void SetSign(Sprite toSet){
+        image1.gameObject.SetActive(true);
+        image2.gameObject.SetActive(true);
+
+        text1.gameObject.SetActive(false);
+        text2.gameObject.SetActive(false);
+
+        image1.sprite = toSet;
+        image2.sprite = toSet;
 	}
 
-	public void ClickRetry(){
+    public void SetSign(string toSet)
+    {
+        image1.gameObject.SetActive(false);
+        image2.gameObject.SetActive(false);
+
+        text1.gameObject.SetActive(true);
+        text2.gameObject.SetActive(true);
+
+        text1.text = toSet;
+        text2.text = toSet;
+    }
+
+    public void ClickRetry(){
 		SceneManager.LoadScene (0);
 	}
 }
