@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class InitializeGame : MonoBehaviour {
 
-    string[] headlines = new string[5];
+    string[] headlines = new string[] { "1", "2", "3", "4", "5" };
     string[] days = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
     string[] desc = new string[] { "Sunny", "Partly Cloudy", "Cloudy", "Rainy"};
     bool setWrong = false;
     int choice = 0;
     Sprite originalIcon;
     string originalText;
+    int index;
 
     public Image[] icons = new Image[7];
     public Text[] DOW = new Text[7];
@@ -89,6 +90,7 @@ public class InitializeGame : MonoBehaviour {
                         newChoice = Random.Range(0, 3);
 
                     icons[index].sprite = iconChoices[newChoice];
+                    this.index = newChoice;
 
                     break;
                 }
@@ -102,6 +104,7 @@ public class InitializeGame : MonoBehaviour {
                         newChoice = Random.Range(0, 6);
 
                     description[index].text = desc[newChoice];
+                    this.index = newChoice;
 
                     break;
                 }
@@ -115,6 +118,7 @@ public class InitializeGame : MonoBehaviour {
                         newChoice = Random.Range(0, 6);
 
                     DOW[index].text = days[newChoice];
+                    this.index = newChoice;
 
                     break;
                 }
@@ -125,6 +129,7 @@ public class InitializeGame : MonoBehaviour {
                     int newHigh = Random.Range(120, 500);
 
                     high[index].text = newHigh.ToString();
+                    this.index = newHigh;
 
                     break;
                 }
@@ -135,6 +140,7 @@ public class InitializeGame : MonoBehaviour {
                     int newLow = Random.Range(120, 500);
 
                     high[index].text = newLow.ToString();
+                    this.index = newLow;
 
                     break;
                 }

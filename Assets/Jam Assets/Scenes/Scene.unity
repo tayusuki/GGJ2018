@@ -6905,51 +6905,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1460845801}
+  - {fileID: 1931273763}
+  - {fileID: 715477677}
+  - {fileID: 634352386}
+  - {fileID: 114270161}
+  - {fileID: 1948299909}
+  - {fileID: 1234943895}
   DOW:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1052492194}
+  - {fileID: 1291836521}
+  - {fileID: 243400026}
+  - {fileID: 1886391261}
+  - {fileID: 1495622252}
+  - {fileID: 446371045}
+  - {fileID: 1597253500}
   description:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 211022404}
+  - {fileID: 1628417803}
+  - {fileID: 1181110339}
+  - {fileID: 2140785792}
+  - {fileID: 1995665484}
+  - {fileID: 499601727}
+  - {fileID: 1831509403}
   high:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 621253686}
+  - {fileID: 407652888}
+  - {fileID: 1524220621}
+  - {fileID: 1331933100}
+  - {fileID: 892225221}
+  - {fileID: 624388692}
+  - {fileID: 772475433}
   low:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 836552544}
+  - {fileID: 1241559557}
+  - {fileID: 495359976}
+  - {fileID: 1368926771}
+  - {fileID: 1132607144}
+  - {fileID: 1850818673}
+  - {fileID: 1831509403}
   headline: {fileID: 745700376}
   iconChoices:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: b923261999924774ab06de133e9330f9, type: 3}
+  - {fileID: 21300000, guid: e63acf9ce274c724b9df58798cf19f6e, type: 3}
+  - {fileID: 21300000, guid: 55fcc1690aa0d504cb39218cf3cddbc5, type: 3}
+  - {fileID: 21300000, guid: 657bfad33ffd0934cb1eb156f87ad842, type: 3}
 --- !u!1 &1052492192
 GameObject:
   m_ObjectHideFlags: 0
@@ -7294,6 +7294,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132607142}
+--- !u!1 &1174829328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1174829329}
+  - component: {fileID: 1174829331}
+  - component: {fileID: 1174829330}
+  m_Layer: 0
+  m_Name: Announcer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1174829329
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174829328}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1475.7133}
+  m_LocalScale: {x: 0.16396815, y: 0.16396815, z: 0.16396815}
+  m_Children: []
+  m_Father: {fileID: 1865119108}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -275.8, y: 2.1316738}
+  m_SizeDelta: {x: 1000, y: 1600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1174829330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174829328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: d35627cf8b8e8e84fb69a3f88eebca25, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1174829331
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174829328}
 --- !u!1 &1181110337
 GameObject:
   m_ObjectHideFlags: 0
@@ -10254,6 +10322,7 @@ RectTransform:
   - {fileID: 1350304810}
   - {fileID: 874622437}
   - {fileID: 464451466}
+  - {fileID: 1174829329}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
