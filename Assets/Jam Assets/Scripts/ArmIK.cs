@@ -15,7 +15,9 @@ public class ArmIK : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		arm1.transform.right = -(armTarget.transform.position - arm1.transform.position).normalized;
+		arm1.transform.right = (-(armTarget.transform.position - arm1.transform.position).normalized);
+		//arm1.transform.forward = Vector3.Cross(-(armTarget.transform.position - arm1.transform.position).normalized, arm1.transform.up);
+		Debug.Log (-(armTarget.transform.position - arm1.transform.position).normalized);
 		//arm1.transform.rotation = Quaternion.Inverse (arm1.transform.rotation);
 	}
 }
