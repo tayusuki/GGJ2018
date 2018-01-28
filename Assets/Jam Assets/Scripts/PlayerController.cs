@@ -18,10 +18,13 @@ public class PlayerController : MonoBehaviour {
 	internal bool canmoveH = true;
 	private bool flipped = false;
 	private Animator anim;
+	public bool haxisisinuse = false;
 
 	void Awake() {
 		anim = GetComponent<Animator> ();
-		rb = GetComponent<Rigidbody> ();	
+		rb = GetComponent<Rigidbody> ();
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Confined;
 	}
 
 	void Update () {
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+
 		anim.SetFloat("hSpeed", Mathf.Abs(rb.velocity.x));
 	}
 
@@ -65,6 +69,16 @@ public class PlayerController : MonoBehaviour {
 
 			anim.SetBool ("Grounded", false);
 		}		
+
+
+		if (Input.GetAxisRaw ("Vertical") < 0) {
+			if (haxisisinuse != true)
+				haxisisinuse = true;
+		}
+		if (Input.GetAxisRaw ("Vertical") == 0) {
+			if (haxisisinuse == true)
+				haxisisinuse = false;
+		}
 
 		//apply gravity
 		rb.AddForce(new Vector3(0f, -gravity * rb.mass, 0));
@@ -82,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (hit.transform.GetComponent<JumpthroughPlatform> ()) {
-				if (Input.GetAxis ("Vertical") < 0 && grounded) {
+				if (Input.GetKeyDown(KeyCode.S) && grounded) {
 					hit.transform.GetComponent<JumpthroughPlatform> ().DisablePlat();
 				}
 			}
