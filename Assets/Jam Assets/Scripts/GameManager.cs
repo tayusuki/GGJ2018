@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (StartRound ());
 	}
 
+	public void WinRoundFunc(){
+		StartCoroutine (WinRound ());
+	}
+
 	IEnumerator LoseRound (){
 		pc.canControl = false;
 		if (health > 1) {

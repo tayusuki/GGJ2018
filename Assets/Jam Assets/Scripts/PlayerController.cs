@@ -20,7 +20,14 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 	public bool haxisisinuse = false;
 
+	private AudioSource snd;
+	public AudioClip JumpSnd;
+	public AudioClip[] WalkSnd;
+	Coroutine walksoundinstance;
+
+
 	void Awake() {
+		snd = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 		Cursor.visible = false;
@@ -45,14 +52,17 @@ public class PlayerController : MonoBehaviour {
 				//if (Physics.SphereCast (transform.position, 1.5f, targetVelocity.normalized, out hit, Mathf.Infinity, ~groundmask)) {
 				//	Debug.Log (hit.distance);
 				//	if (hit.distance > 1)
-						rb.AddForce (velocityChange, ForceMode.VelocityChange);
+				rb.AddForce (velocityChange, ForceMode.VelocityChange);
+				if (walksoundinstance == null && grounded) {
+					walksoundinstance = StartCoroutine (playWalkSnd ());
+				}
 				//}
 
 				if (targetVelocity.x < 0 && !flipped) {
-					transform.localScale = new Vector3 (-1,1,1);
+					transform.localScale = new Vector3 (-1, 1, 1);
 					flipped = true;
 				} else if (targetVelocity.x > 0 && flipped) {
-					transform.localScale = new Vector3 (1,1,1);
+					transform.localScale = new Vector3 (1, 1, 1);
 					flipped = false;
 				}
 			}
@@ -63,7 +73,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (Input.GetButtonDown ("Jump") && grounded && rb.velocity.y < 0.1f) {
+		if (Input.GetButtonDown ("Jump") && grounded && rb.velocity.y < 0.1f && canControl) {
+			snd.clip = JumpSnd;
+			snd.Play ();
 			rb.AddForce (Vector3.up * jumpHeight);
 			grounded = false;
 
@@ -82,6 +94,16 @@ public class PlayerController : MonoBehaviour {
 
 		//apply gravity
 		rb.AddForce(new Vector3(0f, -gravity * rb.mass, 0));
+	}
+
+	IEnumerator playWalkSnd(){
+		yield return new WaitForSeconds (0.05f);
+		if (Input.GetAxisRaw("Horizontal") != 0) {
+			snd.clip = WalkSnd [Random.Range (0, WalkSnd.Length)];
+			snd.Play ();
+		}
+		yield return new WaitForSeconds(0.35f);
+		walksoundinstance = null;
 	}
 
 	void sGrounded(){

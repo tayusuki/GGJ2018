@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 136851787772906706}
   - component: {fileID: 114157349734018552}
   - component: {fileID: 114716385828873114}
+  - component: {fileID: 82565622109091484}
   m_Layer: 8
   m_Name: boxChan
   m_TagString: Untagged
@@ -884,6 +885,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!82 &82565622109091484
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840766262142344}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95285998782730384
 Animator:
   serializedVersion: 3
@@ -921,6 +1002,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   speedMultiplier: 1
+  haxisisinuse: 0
+  JumpSnd: {fileID: 8300000, guid: ec1c20550b301054ba6d16daec67d2cc, type: 3}
+  WalkSnd:
+  - {fileID: 8300000, guid: 475c9f33dffa4284c8f79f00c04a1ba2, type: 3}
+  - {fileID: 8300000, guid: bc385671f9dd3174e9b266a75ac43e1a, type: 3}
+  - {fileID: 8300000, guid: 927d51f268b2b844480bd2addf2a5fea, type: 3}
+  - {fileID: 8300000, guid: a9181ae8027619a4ea15ab5c283df369, type: 3}
 --- !u!114 &114716385828873114
 MonoBehaviour:
   m_ObjectHideFlags: 1
