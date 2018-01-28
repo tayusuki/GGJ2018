@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public float gravity = 10f;
 
 	public LayerMask groundmask;
-	private Rigidbody rb;
+	internal Rigidbody rb;
 	private bool grounded = false;
 	public float speedMultiplier = 1f;
 	internal bool canmoveH = true;
@@ -59,8 +59,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-
-		if (Input.GetButton ("Jump") && grounded) {
+		if (Input.GetButtonDown ("Jump") && grounded && rb.velocity.y < 0.1f) {
 			rb.AddForce (Vector3.up * jumpHeight);
 			grounded = false;
 
@@ -76,10 +75,16 @@ public class PlayerController : MonoBehaviour {
 		Debug.DrawRay (transform.position + (Vector3.down * 1.5f), Vector3.down);
 
 		if (Physics.Raycast (transform.position + (Vector3.down * 1.5f), Vector3.down, out hit, Mathf.Infinity, ~groundmask)) {
-			if (!grounded && hit.distance < 1f) {
+			if (!grounded && hit.distance < 0.4f && Mathf.Abs(rb.velocity.y) < 0.1f ) {
 				speedMultiplier = 1f;
 				grounded = true;
 				anim.SetBool ("Grounded", true);
+			}
+
+			if (hit.transform.GetComponent<JumpthroughPlatform> ()) {
+				if (Input.GetAxis ("Vertical") < 0 && grounded) {
+					hit.transform.GetComponent<JumpthroughPlatform> ().DisablePlat();
+				}
 			}
 		}
 	}
