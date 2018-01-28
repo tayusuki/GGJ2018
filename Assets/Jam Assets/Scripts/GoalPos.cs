@@ -7,16 +7,22 @@ public class GoalPos : MonoBehaviour {
 	public float holdAmount = 5f;
 	public float holdtimer = 0f;
 
+	private GameManager gm;
+
 	// Use this for initialization
-	void Start () {
+	void Awake() {
 		holdtimer = holdAmount;
+		gm = FindObjectOfType<GameManager> ();
 	}
 	
 	// Update is called once per frame
 	void OnTriggerStay (Collider hit) {
 		if (hit.transform.tag == "Sign") {
-			Debug.Log ("ayyy");
-			holdtimer -= 0.1f;
+			if (holdtimer > 0) {
+				holdtimer -= 0.1f;
+			} else {
+				gm.WinRoundFunc ();
+			}
 		}
 	}
 
