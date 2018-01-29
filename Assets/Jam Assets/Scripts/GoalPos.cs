@@ -8,6 +8,7 @@ public class GoalPos : MonoBehaviour {
 	public float holdtimer = 0f;
 
 	private GameManager gm;
+    internal bool hasTransitioned = false;
 
 	// Use this for initialization
 	void Awake() {
@@ -21,7 +22,11 @@ public class GoalPos : MonoBehaviour {
 			if (holdtimer > 0) {
 				holdtimer -= 0.1f;
 			} else {
-				gm.WinRoundFunc ();
+                if (!hasTransitioned)
+                {
+                    gm.WinRoundFunc();
+                    hasTransitioned = true;
+                }
 			}
 		}
 	}

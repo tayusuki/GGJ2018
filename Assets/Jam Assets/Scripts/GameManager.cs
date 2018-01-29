@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
     public Image image2;
     public Text text1;
     public Text text2;
+    public Text viewers;
+    int score = 0;
 
 	public GameObject firstGObutton;
 
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
 		StartCoroutine (StartRound ());
 	}
-
+    /*
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.C)) {
 			StartCoroutine (WinRound ());
@@ -53,21 +55,22 @@ public class GameManager : MonoBehaviour {
 			StartCoroutine (GameOver());
 		}
 	}
-
+    */
 	IEnumerator StartRound () {
 		CanvasAnim.SetTrigger ("Intro");
-		AnnouncmentText.text = Announcments [Random.Range (0, Announcments.Length)];
+        gameInitializer.Initialize();
+        AnnouncmentText.text = Announcments [Random.Range (0, Announcments.Length)];
 		DayNumber.text = "Day " + roundNumber.ToString ();
 		yield return new WaitForSeconds (1f);
 		snd.clip = newsSnd;
 		snd.Play ();
 		yield return new WaitForSeconds (2f);
 		if (roundNumber < 5) {
-			timer = 10;
+			timer = 20;
 		} else if (roundNumber < 10) {
-			timer = 5;
+			timer = 10;
 		} else if (roundNumber < 15) {
-			timer = 3;
+			timer = 5;
 		}
 		timertext.text = timer.ToString();
 
@@ -81,16 +84,17 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		timerinstance = StartCoroutine(TickTimer ());
 		pc.canControl = true;
-        gameInitializer.Initialize();
 		//yield return new WaitForSeconds (1f);
 	}
 
 	IEnumerator WinRound (){
 		StopCoroutine(timerinstance);
 		roundNumber += 1;
+        score += Random.Range(10, 51);
 		CanvasAnim.SetTrigger ("WinRound");
 		CongratsText.text = Congrats [Random.Range (0, Congrats.Length)];
-		pc.canControl = false;
+        pc.canControl = false;
+        viewers.text = "Viewers: " + score;
 		yield return new WaitForSeconds (3f);
 		StartCoroutine (StartRound ());
 	}

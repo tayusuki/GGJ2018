@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InitializeGame : MonoBehaviour {
 
-    string[] headlines = new string[] { "1", "2", "3", "4", "5" };
+    public string[] headlines;
     string[] days = new string[] { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
     string[] desc = new string[] { "Sunny", "Partly Cloudy", "Cloudy", "Rainy"};
     bool setWrong = false;
@@ -34,7 +34,7 @@ public class InitializeGame : MonoBehaviour {
         setWrong = false;
         originalIcon = null;
         originalText = null;
-        headline.text = headlines[Random.Range(0, headlines.Length - 1)];
+        headline.text = headlines[Random.Range(0, headlines.Length)];
 
         DOW[0].text = "SUN";
         DOW[1].text = "MON";
@@ -46,7 +46,7 @@ public class InitializeGame : MonoBehaviour {
 
         for (int i = 0; i < icons.Length; i++)
         {
-            icons[i].sprite = iconChoices[Random.Range(0, iconChoices.Length - 1)];
+            icons[i].sprite = iconChoices[Random.Range(0, iconChoices.Length)];
 
             if(icons[i].sprite.name == "Sun")
             {
@@ -54,7 +54,7 @@ public class InitializeGame : MonoBehaviour {
                 high[i].text = Random.Range(90, 110).ToString();
                 low[i].text = Random.Range(70, 90).ToString();
             }
-            else if(icons[i].sprite.name == "Partly Cloudy")
+            else if(icons[i].sprite.name == "Pretty Cloudy")
             {
                 description[i].text = "Partly Cloudy";
                 high[i].text = Random.Range(70, 90).ToString();
@@ -66,7 +66,7 @@ public class InitializeGame : MonoBehaviour {
                 high[i].text = Random.Range(55, 70).ToString();
                 low[i].text = Random.Range(20, 55).ToString();
             }
-            else
+            else if(icons[i].sprite.name == "Rainy")
             {
                 description[i].text = "Rainy";
                 high[i].text = Random.Range(30, 55).ToString();
@@ -79,18 +79,18 @@ public class InitializeGame : MonoBehaviour {
 
     void setWrongVariable()
     {
-        choice = Random.Range(1, 5);
+        choice = Random.Range(1, 6);
 
         switch (choice)
         {
             case 1:
                 {
-                    int index = Random.Range(0, 6);
+                    int index = Random.Range(0, 7);
                     originalIcon = icons[index].sprite;
-                    int newChoice = Random.Range(0, 3);
+                    int newChoice = Random.Range(0, 4);
 
                     while(icons[index].name == iconChoices[newChoice].name)
-                        newChoice = Random.Range(0, 3);
+                        newChoice = Random.Range(0, 4);
 
                     icons[index].sprite = iconChoices[newChoice];
                     this.index = newChoice;
@@ -100,12 +100,12 @@ public class InitializeGame : MonoBehaviour {
                 }
             case 2:
                 {
-                    int index = Random.Range(0, 6);
+                    int index = Random.Range(0, 7);
                     originalText = description[index].text;
-                    int newChoice = Random.Range(0, 6);
+                    int newChoice = Random.Range(0, 4);
 
                     while (description[index].text == desc[newChoice])
-                        newChoice = Random.Range(0, 6);
+                        newChoice = Random.Range(0, 4);
 
                     description[index].text = desc[newChoice];
                     this.index = newChoice;
@@ -116,12 +116,12 @@ public class InitializeGame : MonoBehaviour {
                 }
             case 3:
                 {
-                    int index = Random.Range(0, 6);
+                    int index = Random.Range(0, 7);
                     originalText = DOW[index].text;
-                    int newChoice = Random.Range(0, 6);
+                    int newChoice = Random.Range(0, 7);
 
                     while (DOW[index].text == days[newChoice])
-                        newChoice = Random.Range(0, 6);
+                        newChoice = Random.Range(0, 7);
 
                     DOW[index].text = days[newChoice];
                     this.index = newChoice;
@@ -131,9 +131,9 @@ public class InitializeGame : MonoBehaviour {
                 }
             case 4:
                 {
-                    int index = Random.Range(0, 6);
+                    int index = Random.Range(0, 7);
                     originalText = high[index].text;
-                    int newHigh = Random.Range(120, 500);
+                    int newHigh = Random.Range(120, 501);
 
                     high[index].text = newHigh.ToString();
                     this.index = newHigh;
@@ -143,11 +143,11 @@ public class InitializeGame : MonoBehaviour {
                 }
             case 5:
                 {
-                    int index = Random.Range(0, 6);
+                    int index = Random.Range(0, 7);
                     originalText = low[index].text;
-                    int newLow = Random.Range(120, 500);
+                    int newLow = Random.Range(-100, -50);
 
-                    high[index].text = newLow.ToString();
+                    low[index].text = newLow.ToString();
                     this.index = newLow;
                     goal.transform.position = new Vector3(low[index].gameObject.transform.position.x, low[index].gameObject.transform.position.y, goal.transform.position.z);
 
@@ -166,6 +166,9 @@ public class InitializeGame : MonoBehaviour {
             Debug.Log(originalText);
             GameObject.Find("HUD").GetComponent<GameManager>().SetSign(originalText);
         }
-        
+
+        GameObject.FindObjectOfType<GoalPos>().hasTransitioned = false;
+
+
     }
 }
